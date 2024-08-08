@@ -1,0 +1,18 @@
+TO CREATE AN ADMIN USER USE THE COMMAND:
+python manage.py createsuperuser 
+AND ADD THE DETAILS LIKE USER NAME, EMAIL AND PASSWORD
+AND USE THE FOLLOWING COMMAND AND CODE AFTER CREATING SUPER USER:
+    python manage.py shell
+AND THE CODE:
+from django.contrib.auth.models import User, Group
+
+# Find or create the 'admin' group
+admin_group, created = Group.objects.get_or_create(name='admin')
+
+# Find the admin user
+user = User.objects.get(username='Monisha')  # Replace with your admin username
+
+# Add the user to the 'admin' group
+user.groups.add(admin_group)
+user.save()
+AND ENTER: exit() TO EXIT THE SHELL
